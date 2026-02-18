@@ -7,21 +7,16 @@
 
 2.  **Open Terminal**
 
-3.  **Navigate to the project directory**:
-    ```bash
-    cd "osman portfolio"
-    ```
-
-4.  **Install dependencies** (first time only):
+3.  **Install dependencies** (first time only):
     ```bash
     npm install
     ```
 
-5.  **Start the development server**:
+4.  **Start the development server**:
     ```bash
     npm run dev
     ```
 
-6.  **View in Browser**:
+5.  **View in Browser**:
     - The terminal will show a local URL (e.g., `http://localhost:5173`).
     - Command + Click the link or copy-paste it into your browser.
