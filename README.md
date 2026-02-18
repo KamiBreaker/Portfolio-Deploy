@@ -20,3 +20,4 @@
 5.  **View in Browser**:
     - The terminal will show a local URL (e.g., `http://localhost:5173`).
     - Command + Click the link or copy-paste it into your browser.
+    - https://osmanfolio.vercel.app/ for sample check.
