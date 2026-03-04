@@ -74,15 +74,15 @@ const AppShowcase = () => {
                   ) : project.id === "api-auth" ? (
                     <img src="/images/logos/node.png" alt={project.title} className="w-24 h-24 object-contain" />
                   ) : project.id === "habit-tracker" ? (
-                    <img src="/images/logos/react.svg" alt={project.title} className="w-24 h-24 object-contain" />
+                    <img src="/images/logos/react.png" alt={project.title} className="w-24 h-24 object-contain" />
                   ) : project.id === "docs-clone" ? (
                     <img src="/images/logos/git.svg" alt={project.title} className="w-24 h-24 object-contain" />
                   ) : project.id === "doc-tracer" ? (
-                    <img src="/images/ideas.svg" alt={project.title} className="w-24 h-24 object-contain brightness-200" />
+                    <img src="/images/ideas.svg" alt={project.title} className="w-24 h-24 object-contain invert" />
                   ) : project.id === "mr-bird-view" ? (
-                    <img src="/images/concepts.svg" alt={project.title} className="w-24 h-24 object-contain brightness-200" />
+                    <img src="/images/concepts.svg" alt={project.title} className="w-24 h-24 object-contain invert" />
                   ) : (
-                    <img src="/images/designs.svg" alt={project.title} className="w-24 h-24 object-contain opacity-80" />
+                    <img src="/images/designs.svg" alt={project.title} className="w-24 h-24 object-contain invert opacity-80" />
                   )}
                 </div>
               </div>
