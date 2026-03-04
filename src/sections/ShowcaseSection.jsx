@@ -77,8 +77,12 @@ const AppShowcase = () => {
                     <img src="/images/logos/react.svg" alt={project.title} className="w-24 h-24 object-contain" />
                   ) : project.id === "docs-clone" ? (
                     <img src="/images/logos/git.svg" alt={project.title} className="w-24 h-24 object-contain" />
+                  ) : project.id === "doc-tracer" ? (
+                    <img src="/images/ideas.svg" alt={project.title} className="w-24 h-24 object-contain brightness-200" />
+                  ) : project.id === "mr-bird-view" ? (
+                    <img src="/images/concepts.svg" alt={project.title} className="w-24 h-24 object-contain brightness-200" />
                   ) : (
-                    <img src="/images/designs.svg" alt={project.title} className="w-24 h-24 object-contain opacity-50" />
+                    <img src="/images/designs.svg" alt={project.title} className="w-24 h-24 object-contain opacity-80" />
                   )}
                 </div>
               </div>
