@@ -1,12 +1,15 @@
 import { useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
+import { useMediaQuery } from "react-responsive";
 
 const Particles = ({ count = 200 }) => {
   const mesh = useRef();
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const activeCount = isMobile ? Math.min(count, 50) : count;
 
   const particles = useMemo(() => {
     const temp = [];
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < activeCount; i++) {
       temp.push({
         position: [
           (Math.random() - 0.5) * 10,
@@ -21,7 +24,7 @@ const Particles = ({ count = 200 }) => {
 
   useFrame(() => {
     const positions = mesh.current.geometry.attributes.position.array;
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < activeCount; i++) {
       let y = positions[i * 3 + 1];
       y -= particles[i].speed;
       if (y < -2) y = Math.random() * 10 + 5;
@@ -30,7 +33,7 @@ const Particles = ({ count = 200 }) => {
     mesh.current.geometry.attributes.position.needsUpdate = true;
   });
 
-  const positions = new Float32Array(count * 3);
+  const positions = new Float32Array(activeCount * 3);
   particles.forEach((p, i) => {
     positions[i * 3] = p.position[0];
     positions[i * 3 + 1] = p.position[1];
@@ -42,7 +45,7 @@ const Particles = ({ count = 200 }) => {
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
-          count={count}
+          count={activeCount}
           array={positions}
           itemSize={3}
         />
