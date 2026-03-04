@@ -6,7 +6,7 @@ const Particles = ({ count = 200 }) => {
 
   // Compute statically to prevent `bufferAttribute` resizing WebGL crash
   const isMobile = typeof window !== "undefined" ? window.innerWidth <= 768 : false;
-  const activeCount = isMobile ? Math.min(count, 50) : count;
+  const activeCount = isMobile ? Math.min(count, 15) : count;
 
   const particles = useMemo(() => {
     const temp = [];
