@@ -17,9 +17,9 @@ export function Room(props) {
   // Calculate once on mount to avoid EffectComposer unmount crashes
   const isMobile = typeof window !== "undefined" ? window.innerWidth <= 768 : false;
 
-  const curtainMaterial = new THREE.MeshPhongMaterial({
-    color: "#d90429",
-  });
+  const curtainMaterial = isMobile
+    ? new THREE.MeshBasicMaterial({ color: "#d90429" })
+    : new THREE.MeshPhongMaterial({ color: "#d90429" });
 
   const bodyMaterial = new THREE.MeshPhongMaterial({
     map: matcapTexture,
@@ -29,21 +29,21 @@ export function Room(props) {
     color: "#582f0e",
   });
 
-  const radiatorMaterial = new THREE.MeshPhongMaterial({
-    color: "#fff",
-  });
+  const radiatorMaterial = isMobile
+    ? new THREE.MeshBasicMaterial({ color: "#fff" })
+    : new THREE.MeshPhongMaterial({ color: "#fff" });
 
   const compMaterial = new THREE.MeshStandardMaterial({
     color: "#fff",
   });
 
-  const pillowMaterial = new THREE.MeshPhongMaterial({
-    color: "#8338ec",
-  });
+  const pillowMaterial = isMobile
+    ? new THREE.MeshBasicMaterial({ color: "#8338ec" })
+    : new THREE.MeshPhongMaterial({ color: "#8338ec" });
 
-  const chairMaterial = new THREE.MeshPhongMaterial({
-    color: "#000",
-  });
+  const chairMaterial = isMobile
+    ? new THREE.MeshBasicMaterial({ color: "#000" })
+    : new THREE.MeshPhongMaterial({ color: "#000" });
 
   return (
     <group {...props} dispose={null}>

@@ -11,19 +11,24 @@ const ContactExperience = () => {
     <Canvas
       shadows={!isMobile}
       camera={{ position: [0, 3, 7], fov: 45 }}
-      dpr={[1, 1.5]}
-      performance={{ min: 0.5 }}
+      dpr={isMobile ? 1 : [1, 1.5]}
+      performance={{ min: 0.2 }}
     >
       <ambientLight intensity={0.5} color="#fff4e6" />
 
       <directionalLight position={[5, 5, 3]} intensity={2.5} color="#ffd9b3" />
 
-      <directionalLight
-        position={[5, 9, 1]}
-        castShadow
-        intensity={2.5}
-        color="#ffd9b3"
-      />
+      <directionalLight position={[5, 5, 3]} intensity={2.5} color="#ffd9b3" />
+
+      {/* Disable secondary heavy directional castLight entirely on mobile */}
+      {!isMobile && (
+        <directionalLight
+          position={[5, 9, 1]}
+          castShadow
+          intensity={2.5}
+          color="#ffd9b3"
+        />
+      )}
 
       <OrbitControls
         enableZoom={false}

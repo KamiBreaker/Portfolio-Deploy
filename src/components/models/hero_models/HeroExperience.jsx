@@ -8,14 +8,15 @@ import Particles from "./Particles";
 import { Suspense } from "react";
 
 const HeroExperience = () => {
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
-  const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });
+  // Use static window references to ensure no hydration context splits occur
+  const isMobile = typeof window !== "undefined" ? window.innerWidth <= 768 : false;
+  const isTablet = typeof window !== "undefined" ? window.innerWidth <= 1024 : false;
 
   return (
     <Canvas
       camera={{ position: [0, 0, 15], fov: 45 }}
-      dpr={[1, 1.5]}
-      performance={{ min: 0.5 }}
+      dpr={isMobile ? 1 : [1, 1.5]}
+      performance={{ min: 0.2 }}
     >
       {/* deep blue ambient */}
       <ambientLight intensity={0.2} color="#1a1a40" />
@@ -31,7 +32,8 @@ const HeroExperience = () => {
 
       <Suspense fallback={null}>
         <HeroLights />
-        <Particles count={100} />
+        {/* Completely disable buffer manipulations on mobile limits */}
+        {!isMobile && <Particles count={100} />}
         <group
           scale={isMobile ? 0.7 : 1}
           position={[0, -3.5, 0]}
