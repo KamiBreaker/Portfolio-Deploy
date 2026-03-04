@@ -66,10 +66,20 @@ const AppShowcase = () => {
               ref={addToRefs}
               className="group cursor-pointer block bg-black-200 rounded-xl overflow-hidden hover:scale-[1.02] transition-transform duration-300 border border-black-50 hover:border-white-50"
             >
-              <div className="h-64 overflow-hidden relative bg-black-100 flex items-center justify-center">
-                {/* Replaced Image with 3D Model */}
-                <div className="w-full h-full">
-                  <TechIconCardExperience model={project} />
+              <div className="h-64 overflow-hidden relative bg-black-100 flex items-center justify-center p-6">
+                {/* Replaced 3D Model with static image to prevent WebGL Context Limits on mobile and desktop */}
+                <div className="w-full h-full flex items-center justify-center">
+                  {project.id === "dbms-parking-lot" ? (
+                    <img src="/images/logos/python.svg" alt={project.title} className="w-24 h-24 object-contain" />
+                  ) : project.id === "api-auth" ? (
+                    <img src="/images/logos/node.png" alt={project.title} className="w-24 h-24 object-contain" />
+                  ) : project.id === "habit-tracker" ? (
+                    <img src="/images/logos/react.svg" alt={project.title} className="w-24 h-24 object-contain" />
+                  ) : project.id === "docs-clone" ? (
+                    <img src="/images/logos/git.svg" alt={project.title} className="w-24 h-24 object-contain" />
+                  ) : (
+                    <img src="/images/designs.svg" alt={project.title} className="w-24 h-24 object-contain opacity-50" />
+                  )}
                 </div>
               </div>
 
