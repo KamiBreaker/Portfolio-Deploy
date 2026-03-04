@@ -8,13 +8,14 @@ import { useGLTF, useTexture } from "@react-three/drei";
 import { EffectComposer, SelectiveBloom } from "@react-three/postprocessing";
 import { BlendFunction } from "postprocessing";
 import * as THREE from "three";
-import { useMediaQuery } from "react-responsive";
 
 export function Room(props) {
   const { nodes, materials } = useGLTF("/models/optimized-room.glb");
   const screensRef = useRef();
   const matcapTexture = useTexture("/images/textures/mat1.png");
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+
+  // Calculate once on mount to avoid EffectComposer unmount crashes
+  const isMobile = typeof window !== "undefined" ? window.innerWidth <= 768 : false;
 
   const curtainMaterial = new THREE.MeshPhongMaterial({
     color: "#d90429",

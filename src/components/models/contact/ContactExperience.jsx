@@ -1,11 +1,11 @@
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { useMediaQuery } from "react-responsive";
 
 import Computer from "./Computer";
 
 const ContactExperience = () => {
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  // Compute statically to prevent WebGL shadow maps unbalancing on mount
+  const isMobile = typeof window !== "undefined" ? window.innerWidth <= 768 : false;
 
   return (
     <Canvas

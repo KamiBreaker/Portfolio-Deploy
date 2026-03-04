@@ -1,10 +1,11 @@
 import { useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
-import { useMediaQuery } from "react-responsive";
 
 const Particles = ({ count = 200 }) => {
   const mesh = useRef();
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+
+  // Compute statically to prevent `bufferAttribute` resizing WebGL crash
+  const isMobile = typeof window !== "undefined" ? window.innerWidth <= 768 : false;
   const activeCount = isMobile ? Math.min(count, 50) : count;
 
   const particles = useMemo(() => {
